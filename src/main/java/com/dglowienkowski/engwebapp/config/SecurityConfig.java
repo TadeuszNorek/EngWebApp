@@ -31,7 +31,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		
+		http.authorizeRequests()
+		.antMatchers("/costam").hasRole("ADMIN")
+		.antMatchers("/resources/**").permitAll()
+		.and()
+		.formLogin()
+			.loginPage("/showLoginPage")
+			.loginProcessingUrl("/authenticateTheUser")
+			.permitAll()
+		.and()
+		.logout().permitAll()
+		.and()
+		.exceptionHandling().accessDeniedPage("/access-denied");
 		
 	}
 	

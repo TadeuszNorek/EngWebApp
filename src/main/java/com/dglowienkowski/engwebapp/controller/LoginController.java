@@ -22,4 +22,11 @@ public class LoginController {
 		
 	}
 	
+	@GetMapping("/costam")
+	public String costam() {
+		
+		return "costam";
+		
+	}
+	
 }
