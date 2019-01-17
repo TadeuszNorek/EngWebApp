@@ -1,8 +1,15 @@
 package com.dglowienkowski.engwebapp.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +25,10 @@ public class User {
 	
 	@Column(name="enabled")
 	private int enabled;
+	
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="username")
+	private List<TabooCard> tabooCards;
 	
 	public User() {
 		
@@ -51,6 +62,21 @@ public class User {
 
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
+	}
+
+	public List<TabooCard> getTabooCards() {
+		return tabooCards;
+	}
+
+	public void setTabooCards(List<TabooCard> tabooCards) {
+		this.tabooCards = tabooCards;
+	}
+	
+	public void addTabooCard(TabooCard theTabooCard) {
+		if (tabooCards == null) {
+			tabooCards = new ArrayList<>();
+		}
+		tabooCards.add(theTabooCard);
 	}
 
 	@Override
