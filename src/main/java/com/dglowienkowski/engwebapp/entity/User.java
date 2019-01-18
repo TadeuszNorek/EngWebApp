@@ -30,6 +30,10 @@ public class User {
 	@JoinColumn(name="username")
 	private List<TabooCard> tabooCards;
 	
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="username")
+	private List<HeadsUpCard> headsUpCards;
+	
 	public User() {
 		
 	}

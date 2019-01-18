@@ -13,7 +13,7 @@
 <html>
 
 <head>
-	<title>List Taboo Cards</title>
+	<title>List Heads Up Cards</title>
 	
 	<!-- reference our style sheet -->
 
@@ -27,7 +27,7 @@
 
 	<div id="wrapper">
 		<div id="header">
-			<h2>Play Taboo</h2>
+			<h2>Play Head's Up!</h2>
 		</div>
 	</div>
 	
@@ -42,7 +42,7 @@
 
 			<security:authorize access="hasAnyRole('USER', 'ADMIN')">
 			
-				<!-- put new button: Add Taboo card -->
+				<!-- put new button: Add Heads Up card -->
 			
 				<input type="button" value="Add Card"
 					   onclick="window.location.href='showAddForm'; return false;"
@@ -56,36 +56,27 @@
 		
 			<table>
 				<tr>
-					<th>Keyword</th>
-					<th>Taboo word 1</th>
-					<th>Taboo word 2</th>
-					<th>Taboo word 3</th>
-					<th>Taboo word 4</th>
-					<th>Taboo word 5</th>
+					<th>Author</th>
+					<th>Title</th>
 					<th>Action</th>
 				</tr>
 				
-				<!-- loop over and print taboo cards -->
-				<c:forEach var="tempTabooCard" items="${tabooCards}">
+				<!-- loop over and print heads up cards -->
+				<c:forEach var="tempHeadsUpCard" items="${headsUpCards}">
 				
 					<!-- construct an "update" link with card id -->
-					<c:url var="updateLink" value="/taboocards/showUpdateForm">
-						<c:param name="tabooCardId" value="${tempTabooCard.id}" />
+					<c:url var="updateLink" value="/headsupcards/showUpdateForm">
+						<c:param name="headsUpCardId" value="${tempHeadsUpCard.id}" />
 					</c:url>					
 
 					<!-- construct an "delete" link with card id -->
-					<c:url var="deleteLink" value="/taboocards/delete">
-						<c:param name="tabooCardId" value="${tempTabooCard.id}" />
+					<c:url var="deleteLink" value="/headsupcards/delete">
+						<c:param name="headsUpCardId" value="${tempHeadsUpCard.id}" />
 					</c:url>					
 					
 					<tr>
-						<td> ${tempTabooCard.keyword} </td>
-						<td> ${tempTabooCard.tabooWord1} </td>
-						<td> ${tempTabooCard.tabooWord2} </td>
-						<td> ${tempTabooCard.tabooWord3} </td>
-						<td> ${tempTabooCard.tabooWord4} </td>
-						<td> ${tempTabooCard.tabooWord5} </td>
-
+						<td> ${tempHeadsUpCard.author} </td>
+						<td> ${tempHeadsUpCard.title} </td>
 						<td>
 							<a href="${updateLink}">Update</a>
 

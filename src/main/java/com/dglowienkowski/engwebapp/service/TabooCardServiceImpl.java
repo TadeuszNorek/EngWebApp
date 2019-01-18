@@ -37,6 +37,7 @@ public class TabooCardServiceImpl implements TabooCardService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteTabooCard(int theId) {
 
 		tabooCardDAO.deleteTabooCard(theId);

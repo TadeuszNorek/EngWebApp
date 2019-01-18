@@ -45,10 +45,13 @@ public class TabooCardController {
 	public String showAddForm(Model theModel) {
 		
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	    String name = user.getUsername(); //get logged in username
-		//String currentPrincipalName = authentication.getName();
+	    
+		String name = user.getUsername(); //get logged in username
+
 		TabooCard theTabooCard = new TabooCard();
-		logger.info("\nLogger: user name is " + name);
+		
+		//logger.info("\nLogger: user name is " + name);
+		
 		theTabooCard.setUsername(name);
 		
 		theModel.addAttribute("tabooCard", theTabooCard);
