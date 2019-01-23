@@ -6,7 +6,7 @@ import com.dglowienkowski.engwebapp.entity.HeadsUpCard;
 
 public interface HeadsUpCardDAO {
 
-	public List<HeadsUpCard> getHeadsUpCards();
+	public List<HeadsUpCard> getHeadsUpCards(String username);
 	
 	public void saveHeadsUpCard(HeadsUpCard theHeadsUpCard);
 	

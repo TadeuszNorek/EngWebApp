@@ -17,9 +17,9 @@ public class HeadsUpCardServiceImpl implements HeadsUpCardService {
 	
 	@Override
 	@Transactional
-	public List<HeadsUpCard> getHeadsUpCards() {
+	public List<HeadsUpCard> getHeadsUpCards(String username) {
 
-		return headsUpCardDAO.getHeadsUpCards();
+		return headsUpCardDAO.getHeadsUpCards(username);
 	}
 
 	@Override

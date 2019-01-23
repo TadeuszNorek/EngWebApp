@@ -6,7 +6,7 @@ import com.dglowienkowski.engwebapp.entity.TabooCard;
 
 public interface TabooCardService {
 
-	public List<TabooCard> getTabooCards();
+	public List<TabooCard> getTabooCards(String username);
 	
 	public void saveTabooCard(TabooCard theTabooCard);
 	

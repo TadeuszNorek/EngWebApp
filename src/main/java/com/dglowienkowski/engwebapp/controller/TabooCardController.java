@@ -32,7 +32,7 @@ public class TabooCardController {
 	@GetMapping("/list")
 	public String listTabooCards(Model theModel) {
 		
-		List<TabooCard> tabooCards = tabooCardService.getTabooCards();
+		List<TabooCard> tabooCards = tabooCardService.getTabooCards(getUserName());
 		
 		theModel.addAttribute("tabooCards", tabooCards);
 		
@@ -44,15 +44,9 @@ public class TabooCardController {
 	@GetMapping("/showAddForm")
 	public String showAddForm(Model theModel) {
 		
-		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	    
-		String name = user.getUsername(); //get logged in username
-
 		TabooCard theTabooCard = new TabooCard();
 		
-		//logger.info("\nLogger: user name is " + name);
-		
-		theTabooCard.setUsername(name);
+		theTabooCard.setUsername(getUserName());
 		
 		theModel.addAttribute("tabooCard", theTabooCard);
 		
@@ -84,5 +78,14 @@ public class TabooCardController {
 		tabooCardService.deleteTabooCard(theId);
 		
 		return "redirect:/taboocards/list";
+	}
+	
+	public String getUserName() {
+		
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    
+		String name = user.getUsername(); //get logged in username
+		
+		return name;
 	}
 }

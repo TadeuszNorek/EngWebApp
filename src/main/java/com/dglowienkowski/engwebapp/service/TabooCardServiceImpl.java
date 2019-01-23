@@ -17,9 +17,9 @@ public class TabooCardServiceImpl implements TabooCardService {
 	
 	@Override
 	@Transactional
-	public List<TabooCard> getTabooCards() {
+	public List<TabooCard> getTabooCards(String username) {
 
-		return tabooCardDAO.getTabooCards();
+		return tabooCardDAO.getTabooCards(username);
 	}
 
 	@Override

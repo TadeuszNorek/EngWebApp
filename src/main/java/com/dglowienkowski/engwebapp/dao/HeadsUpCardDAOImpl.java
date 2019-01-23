@@ -17,15 +17,15 @@ public class HeadsUpCardDAOImpl implements HeadsUpCardDAO {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public List<HeadsUpCard> getHeadsUpCards() {
+	public List<HeadsUpCard> getHeadsUpCards(String username) {
 
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		Query<HeadsUpCard> theQuery = 
-				currentSession.createQuery("from HeadsUpCard order by id",
+				currentSession.createQuery("from HeadsUpCard where username = :username OR username = 'default' order by id",
 											HeadsUpCard.class);
 		
-		List<HeadsUpCard> headsUpCards = theQuery.getResultList();
+		List<HeadsUpCard> headsUpCards = theQuery.setParameter("username", username).getResultList();
 		
 		return headsUpCards;
 	}

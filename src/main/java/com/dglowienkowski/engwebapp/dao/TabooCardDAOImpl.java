@@ -17,15 +17,15 @@ public class TabooCardDAOImpl implements TabooCardDAO {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public List<TabooCard> getTabooCards() {
+	public List<TabooCard> getTabooCards(String username) {
 
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		Query<TabooCard> theQuery = 
-				currentSession.createQuery("from TabooCard order by id", 
+				currentSession.createQuery("from TabooCard where username = :username OR username = 'default' order by id", 
 											TabooCard.class);
 		
-		List<TabooCard> tabooCards = theQuery.getResultList();
+		List<TabooCard> tabooCards = theQuery.setParameter("username", username).getResultList();
 		
 		return tabooCards;
 	}

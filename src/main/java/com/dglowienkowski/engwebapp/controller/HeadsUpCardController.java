@@ -32,7 +32,7 @@ public class HeadsUpCardController {
 	@GetMapping("/list")
 	public String listHeadsUpCards(Model theModel) {
 		
-		List<HeadsUpCard> headsUpCards = headsUpCardService.getHeadsUpCards();
+		List<HeadsUpCard> headsUpCards = headsUpCardService.getHeadsUpCards(getUserName());
 		
 		theModel.addAttribute("headsUpCards", headsUpCards);
 		
@@ -42,13 +42,9 @@ public class HeadsUpCardController {
 	@GetMapping("/showAddForm")
 	public String showAddForm(Model theModel) {
 		
-		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	    
-		String name = user.getUsername(); //get logged in username
-		
 		HeadsUpCard theHeadsUpCard = new HeadsUpCard();
 		
-		theHeadsUpCard.setUsername(name);
+		theHeadsUpCard.setUsername(getUserName());
 		
 		theModel.addAttribute("headsUpCard", theHeadsUpCard);
 		
@@ -80,5 +76,14 @@ public class HeadsUpCardController {
 		headsUpCardService.deleteHeadsUpCard(theId);
 		
 		return "redirect:/headsupcards/list";
+	}
+	
+	public String getUserName() {
+		
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    
+		String name = user.getUsername(); //get logged in username
+		
+		return name;
 	}
 }
