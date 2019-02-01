@@ -22,10 +22,10 @@ public class LoginController {
 		
 	}
 	
-	@GetMapping("/costam")
-	public String costam() {
+	@GetMapping("/welcome")
+	public String welcome() {
 		
-		return "costam";
+		return "welcome";
 		
 	}
 	

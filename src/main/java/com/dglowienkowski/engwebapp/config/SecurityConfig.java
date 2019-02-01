@@ -38,7 +38,7 @@ public class SecurityConfig{
 
 			http.antMatcher("/api/**")
 			.authorizeRequests()
-			.anyRequest().hasRole("USER")
+			.anyRequest().hasAnyRole("USER", "ADMIN")
 			.and()
 			.httpBasic()
 			.and()
@@ -63,8 +63,10 @@ public class SecurityConfig{
 		protected void configure(HttpSecurity http) throws Exception {
 
 			http.authorizeRequests()
-			.antMatchers("/costam").hasRole("ADMIN")
+			.antMatchers("/welcome").permitAll()
 			.antMatchers("/resources/**").permitAll()
+			.antMatchers("/taboocards/**").hasAnyRole("ADMIN", "USER")
+			.antMatchers("/headsupcards/**").hasAnyRole("ADMIN", "USER")
 			.and()
 			.formLogin()
 				.loginPage("/showLoginPage")

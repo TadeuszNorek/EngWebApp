@@ -19,11 +19,11 @@
     <link type="text/css"
 		  rel="stylesheet"
 		  href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
-	<title>Dodaj kartę</title>
 
+	<title>Strona główna</title>
 </head>
-
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="${pageContext.request.contextPath}/welcome">Strona główna</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,73 +54,8 @@
 	</security:authorize>
   </div>
 </nav>
-	<br>
-	<br>
-	<div class="container">
-		<form:form action="saveTabooCard" modelAttribute="tabooCard" method="POST">
 
-			<!-- need to associate this data with taboo card id -->
-			<form:hidden path="id" />
-			<form:hidden path="username"/>
-					
-			<table class="table table-hover">
-				<tbody>
-					<tr>
-						<td><label>Hasło:</label></td>
-						<td><form:input class="form-control" path="keyword" /></td>
-					</tr>
-				
-					<tr>
-						<td><label>Słowo taboo 1:</label></td>
-						<td><form:input class="form-control" path="tabooWord1" /></td>
-					</tr>
-					
-					<tr>
-						<td><label>Słowo taboo 2:</label></td>
-						<td><form:input class="form-control" path="tabooWord2" /></td>
-					</tr>
-					
-					<tr>
-						<td><label>Słowo taboo 3:</label></td>
-						<td><form:input class="form-control" path="tabooWord3" /></td>
-					</tr>
-					
-					<tr>
-						<td><label>Słowo taboo 4:</label></td>
-						<td><form:input class="form-control" path="tabooWord4" /></td>
-					</tr>
-					
-					<tr>
-						<td><label>Słowo taboo 5:</label></td>
-						<td><form:input class="form-control" path="tabooWord5" /></td>
-					</tr>
 
-					<tr>
-						<td><label></label></td>
-						<td><input class="btn btn-primary" type="submit" value="Zapisz" /></td>
-					</tr>
-
-				
-				</tbody>
-			</table>
-		
-		
-		</form:form>
 	
-		<p>
-			<a href="${pageContext.request.contextPath}/taboocards/list">Wróć do listy</a>
-		</p>
-	</div>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-

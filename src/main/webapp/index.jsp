@@ -1,1 +1,1 @@
-<% response.sendRedirect("costam"); %>
+<% response.sendRedirect("welcome"); %>
