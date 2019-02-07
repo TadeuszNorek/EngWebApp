@@ -14,8 +14,6 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <!-- Bootstrap -->
     <link type="text/css"
 		  rel="stylesheet"
 		  href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
@@ -33,7 +31,7 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Jak grać?</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/howToPlay">Jak grać?</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="${pageContext.request.contextPath}/taboocards/list">Przeglądaj karty Taboo</a>
@@ -49,7 +47,7 @@
 	</security:authorize>
 	<security:authorize access="isAnonymous()">
 		<form:form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/showLoginPage" method="GET">
-		<input class="btn btn-secondary my-2 my-sm-0" type="submit" value="Zalouj"/>
+		<input class="btn btn-secondary my-2 my-sm-0" type="submit" value="Zaloguj"/>
 		</form:form>
 	</security:authorize>
   </div>

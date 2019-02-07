@@ -67,7 +67,7 @@ public class RegistrationController {
 		if (theBindingResult.hasErrors()) {
 
 			theModel.addAttribute("crmUser", new CrmUser());
-			theModel.addAttribute("registrationError", "User name/password can not be empty.");
+			theModel.addAttribute("registrationError", "Login/has³o nie mog¹ byæ puste!.");
 
 			logger.warning("User name/password can not be empty.");
 			
@@ -79,7 +79,7 @@ public class RegistrationController {
 		
 		if (userExists) {
 			theModel.addAttribute("crmUser", new CrmUser());
-			theModel.addAttribute("registrationError", "User name already exists.");
+			theModel.addAttribute("registrationError", "U¿ytkownik o takiej nazwie ju¿ istnieje.");
 
 			logger.warning("User name already exists.");
 			

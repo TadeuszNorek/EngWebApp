@@ -17,18 +17,11 @@
     <link type="text/css"
 		  rel="stylesheet"
 		  href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
-	<title>Przeglądaj swoje karty Taboo</title>
-	<style>
-		html {
-    		height: 100%;
-		} 
-		body {
-    		height: 100%;
-		}
-	</style>
-</head>
 
+	<title>Jak grać?</title>
+</head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="${pageContext.request.contextPath}/welcome">Strona główna</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,65 +52,30 @@
 	</security:authorize>
   </div>
 </nav>
-
 <br>
 <br>
-
 <div class="container">
-	<input type="button" value="Dodaj kartę"
-		onclick="window.location.href='showAddForm'; return false;"
-		class="btn btn-primary"/>
+  <div class="jumbotron">
+  <h1 class="display-3">Jak grać?</h1>
+  <hr class="my-4">
+  <h3>Taboo / Tabu – zasady gry</h2>
+  <p class="lead">Zasady gry są proste. Uczestnicy dzielą się na drużyny (minimum dwuosobowe). Wybrany gracz z drużyny losuje kartę z hasłem i próbuje naprowadzić pozostałych graczy z drużyny na odgadnięcie hasła. W tym czasie drużyna przeciwna pilnuje, czy zawodnik opisujący hasło przestrzega zasad kilku zasad:</p>
+  <ul class="lead">
+  	<li>Nie wolno używać żadnej części hasła (ani synonimów), które należy odgadnąć.</li>
+  	<li>Nie można używać liczby mnogiej ani skrótów dla hasła znajdującego się na karcie.</li>
+  	<li>Nie można gestykulować, ale można śpiewać.</li>
+  	<li>Najważniejsze: Nie można używać zakazanych słów, które znajdują się na karcie pod hasłem.</li>
+  </ul>
+  <p class="lead">Te kilka prostych zasad sprawiają, że opisanie hasła z karty staje się bardzo trudne. Taboo (Tabu) to gra, która zmusza do myślenia.</p>
+  
+  <hr class="my-4">
+  
+  <h3>Head's Up! / Czółko – zasady gry</h3>
+  <p class="lead">By zagrać, przyłóż telefon do czoła, ekranem do reszty zebranych. Publiczność zobaczy na wyświetlaczu hasło, które my będziemy musieli zgadnąć wysłuchując lub obserwując ich wskazówki. Jeśli uda nam się w ustalonym czasie trafić, dotykamy ekranu i zyskujemy punkt. W sytuacji, gdy hasło jest zbyt trudne i któraś ze stron zrezygnuje z gry, wtedy stukamy palcem w ekran dwa razy i przechodzimy do kolejnego tytułu. Po 10 hasłach runda się kończy; podobnie dzieje się, gdy minie czas wyznaczony na odgadnięcie hasła.</p>
+  
+</div>
+</div>
 
-	<br>
-	<br>
-
-		
-	<table class="table table-hover">
-		<thead>
-    		<tr class="table-light">
-      			<th scope="col">Hasło</th>
-      			<th scope="col">Słowo taboo 1</th>
-      			<th scope="col">Słowo taboo 2</th>
-      			<th scope="col">Słowo taboo 3</th>
-      			<th scope="col">Słowo taboo 4</th>
-      			<th scope="col">Słowo taboo 5</th>
-      			<th scope="col">Akcja</th>
-    		</tr>
-  		</thead>
-		<tbody>		
-
-				<c:forEach var="tempTabooCard" items="${tabooCards}">
-				
-					<c:url var="updateLink" value="/taboocards/showUpdateForm">
-						<c:param name="tabooCardId" value="${tempTabooCard.id}" />
-					</c:url>					
-
-					<c:url var="deleteLink" value="/taboocards/delete">
-						<c:param name="tabooCardId" value="${tempTabooCard.id}" />
-					</c:url>					
-					
-					<tr class="table-light">
-						<td> ${tempTabooCard.keyword} </td>
-						<td> ${tempTabooCard.tabooWord1} </td>
-						<td> ${tempTabooCard.tabooWord2} </td>
-						<td> ${tempTabooCard.tabooWord3} </td>
-						<td> ${tempTabooCard.tabooWord4} </td>
-						<td> ${tempTabooCard.tabooWord5} </td>
-
-						<td>
-							<a class="btn btn-info" href="${updateLink}">Edytuj</a>
-
-							<a class="btn btn-danger" href="${deleteLink}" 
-							   onclick="if (!(confirm('Czy na pewno chcesz usunąć tę kartę?'))) return false">Usuń</a>
-						</td>
-					</tr>
-				
-				</c:forEach>
-		</tbody>		
-	</table>
-	
-	
-</div>				
 <div class="footer navbar-fixed-bottom">
 <div class="container">
 	<footer id="footer">
@@ -133,16 +91,6 @@
 
       </footer>
 </div>
-</div>
+</div>	
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-

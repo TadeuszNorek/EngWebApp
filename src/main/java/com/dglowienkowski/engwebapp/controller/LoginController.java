@@ -29,4 +29,11 @@ public class LoginController {
 		
 	}
 	
+	@GetMapping("/howToPlay")
+	public String howToPlay() {
+		
+		return "how-to-play";
+	
+	}
+	
 }

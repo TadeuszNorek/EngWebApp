@@ -14,8 +14,6 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <!-- Bootstrap -->
     <link type="text/css"
 		  rel="stylesheet"
 		  href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
@@ -23,11 +21,6 @@
 	<title>Logowanie</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
-	<!-- Reference Bootstrap files 
-	<link rel="stylesheet"
-		 href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	
 	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -44,7 +37,7 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Jak grać?</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/howToPlay">Jak grać?</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="${pageContext.request.contextPath}/taboocards/list">Przeglądaj karty Taboo</a>
@@ -60,7 +53,7 @@
 	</security:authorize>
 	<security:authorize access="isAnonymous()">
 		<form:form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/showLoginPage" method="GET">
-		<input class="btn btn-secondary my-2 my-sm-0" type="submit" value="Zalouj"/>
+		<input class="btn btn-secondary my-2 my-sm-0" type="submit" value="Zaloguj"/>
 		</form:form>
 	</security:authorize>
   </div>
@@ -78,16 +71,12 @@
 
 				<div style="padding-top: 30px" class="panel-body">
 
-					<!-- Login Form -->
 					<form action="${pageContext.request.contextPath}/authenticateTheUser" 
 						  method="POST" class="form-horizontal">
 
-					    <!-- Place for messages: error, alert etc ... -->
 					    <div class="form-group">
 					        <div class="col-xs-15">
 					            <div>
-								
-									<!-- Check for login error -->
 								
 									<c:if test="${param.error != null}">
 										
@@ -96,8 +85,6 @@
 										</div>
 		
 									</c:if>
-										
-									<!-- Check for logout -->
 
 									<c:if test="${param.logout != null}">
 										            
@@ -111,28 +98,23 @@
 					        </div>
 					    </div>
 
-						<!-- User name -->
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
 							
 							<input type="text" name="username" placeholder="login" class="form-control">
 						</div>
 
-						<!-- Password -->
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
 							
 							<input type="password" name="password" placeholder="hasło" class="form-control" >
 						</div>
 
-						<!-- Login/Submit Button -->
 						<div style="margin-top: 10px" class="form-group">						
 							<div class="col-sm-6 controls">
 								<button type="submit" class="btn btn-success">Zaloguj</button>
 							</div>
 						</div>
-
-						<!-- manually added token -->
 
 						<input type="hidden"
 							   name="${_csrf.parameterName}"

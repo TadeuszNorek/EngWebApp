@@ -1,6 +1,7 @@
 package com.dglowienkowski.engwebapp.controller;
 
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,33 @@ public class APIController {
 		
 		logger.info("\nHeads Up cards from db: " + headsUpCards.toString());
 		return headsUpCards;
+	}
+	
+	@GetMapping("/taboocard/{username}")
+	public TabooCard pickTabooCard(@PathVariable String username) {
+		
+		List<TabooCard> tabooCards = tabooCardService.getTabooCards(username);
+		
+		Random generator = new Random();
+		int i = generator.nextInt(tabooCards.size());
+		
+		TabooCard card = tabooCards.get(i);
+		//logger.info("\nTaboo cards from db: " + tabooCards.toString());
+		return card;
+	}
+	
+	@GetMapping("/headsupcard/{username}")
+	public HeadsUpCard pickHeadsUpCard(@PathVariable String username) {
+		
+		List<HeadsUpCard> headsUpCards = headsUpCardService.getHeadsUpCards(username);
+		logger.info("\nHeads Up cards from db: " + headsUpCards.toString());
+		
+		Random generator = new Random();
+		int i = generator.nextInt(headsUpCards.size());
+		
+		HeadsUpCard card = headsUpCards.get(i);
+		
+		return card;
 	}
 	
 	@GetMapping("/authentication")

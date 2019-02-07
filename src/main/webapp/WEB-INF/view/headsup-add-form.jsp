@@ -14,18 +14,13 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Bootstrap -->
     <link type="text/css"
 		  rel="stylesheet"
 		  href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
-	<title>Przeglądaj swoje karty Taboo</title>
-	<style>
-		html {
-    		height: 100%;
-		} 
-		body {
-    		height: 100%;
-		}
-	</style>
+	<title>Dodaj kartę</title>
+
 </head>
 
 <body>
@@ -59,84 +54,47 @@
 	</security:authorize>
   </div>
 </nav>
-
-<br>
-<br>
-
-<div class="container">
-	<input type="button" value="Dodaj kartę"
-		onclick="window.location.href='showAddForm'; return false;"
-		class="btn btn-primary"/>
-
 	<br>
 	<br>
+	<div class="container">
+		<form:form action="saveHeadsUpCard" modelAttribute="headsUpCard" method="POST">
 
-		
-	<table class="table table-hover">
-		<thead>
-    		<tr class="table-light">
-      			<th scope="col">Hasło</th>
-      			<th scope="col">Słowo taboo 1</th>
-      			<th scope="col">Słowo taboo 2</th>
-      			<th scope="col">Słowo taboo 3</th>
-      			<th scope="col">Słowo taboo 4</th>
-      			<th scope="col">Słowo taboo 5</th>
-      			<th scope="col">Akcja</th>
-    		</tr>
-  		</thead>
-		<tbody>		
-
-				<c:forEach var="tempTabooCard" items="${tabooCards}">
-				
-					<c:url var="updateLink" value="/taboocards/showUpdateForm">
-						<c:param name="tabooCardId" value="${tempTabooCard.id}" />
-					</c:url>					
-
-					<c:url var="deleteLink" value="/taboocards/delete">
-						<c:param name="tabooCardId" value="${tempTabooCard.id}" />
-					</c:url>					
+			<!-- need to associate this data with taboo card id -->
+			<form:hidden path="id" />
+			<form:hidden path="username"/>
 					
-					<tr class="table-light">
-						<td> ${tempTabooCard.keyword} </td>
-						<td> ${tempTabooCard.tabooWord1} </td>
-						<td> ${tempTabooCard.tabooWord2} </td>
-						<td> ${tempTabooCard.tabooWord3} </td>
-						<td> ${tempTabooCard.tabooWord4} </td>
-						<td> ${tempTabooCard.tabooWord5} </td>
-
-						<td>
-							<a class="btn btn-info" href="${updateLink}">Edytuj</a>
-
-							<a class="btn btn-danger" href="${deleteLink}" 
-							   onclick="if (!(confirm('Czy na pewno chcesz usunąć tę kartę?'))) return false">Usuń</a>
-						</td>
+			<table class="table table-hover">
+				<tbody>
+					<tr>
+						<td><label>Autor:</label></td>
+						<td><form:input class="form-control" path="author" /></td>
 					</tr>
 				
-				</c:forEach>
-		</tbody>		
-	</table>
-	
-	
-</div>				
-<div class="footer navbar-fixed-bottom">
-<div class="container">
-	<footer id="footer">
-        <div class="row">
-          <div class="col-lg-12">
+					<tr>
+						<td><label>Tytuł utworu:</label></td>
+						<td><form:input class="form-control" path="title" /></td>
+					</tr>
 
-            <ul class="list-unstyled">
-              <li class="float-lg-right"><a href="#top">Do góry</a></li>
-            </ul>
-            <p>© 2018 Copyright Dawid Głowienkowski</p>
-          </div>
-        </div>
+					<tr>
+						<td><label></label></td>
+						<td><input class="btn btn-primary" type="submit" value="Zapisz" /></td>
+					</tr>
 
-      </footer>
-</div>
-</div>
+				
+				</tbody>
+			</table>
+		
+		
+		</form:form>
+	
+		<p>
+			<a href="${pageContext.request.contextPath}/headsupcards/list">Wróć do listy</a>
+		</p>
+	</div>
 </body>
 
 </html>
+
 
 
 
