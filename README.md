@@ -1,5 +1,5 @@
-# EngWebApp
-Aplikacja webowa do zarządzania hasłami dla gier bazujących na zasadach popularnych tytułów, takich jak Taboo i Head's up. Aplikacja ma udostępniać następujące funkcjonalności:
+# Aplikacja webowa do gier integracyjnych
+Aplikacja webowa do zarządzania hasłami dla gier integracyjnych bazujących na zasadach popularnych tytułów, takich jak Taboo i Head's up. Aplikacja ma udostępniać następujące funkcjonalności:
 - rejestracja użytkowników
 - logowanie
 - zarządzanie bazą kart z hasłami dla gier
