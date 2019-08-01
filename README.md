@@ -1,15 +1,12 @@
 # Aplikacja webowa do gier integracyjnych
-Aplikacja webowa do zarządzania hasłami dla gier integracyjnych bazujących na zasadach popularnych tytułów, takich jak Taboo i Head's up. Aplikacja ma udostępniać następujące funkcjonalności:
-- rejestracja użytkowników
+Aplikacja mobilna umożliwiająca przeprowadzanie rozgrywki dla gier integracyjnych bazujących na zasadach popularnych tytułów, takich jak Taboo i Head's up. Aplikacja ma udostępniać następujące funkcjonalności:
 - logowanie
-- zarządzanie bazą kart z hasłami dla gier
-- tworzenie zestawów kart
-- RESTowe API dla aplikacji mobilnej
+- implementacja gry Taboo i Head's up
+- ustawienia zasad i podsumowywanie rozgrywki
+- pobieranie zestawów kart z API aplikacji webowej
 
 Technologie:
-- Java
-- Spring (MVC, Security)
-- Hibernate
-- MySQL
-- Bootstrap
-- Jackson
+- Android
+- Kotlin
+- GSON
+- Retrofit
